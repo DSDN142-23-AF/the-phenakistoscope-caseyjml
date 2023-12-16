@@ -23,13 +23,13 @@ function setup_layers(pScope){
 
 function faces(x, y, animation, pScope){
   
-  scale(animation.frame*2);
+  //scale(animation.frame*2);
 
-  ellipse(0,0,50,50); // draw head
-  fill(30);
-  ellipse(-10,-10,10,10); //draw eye
-  ellipse(10,-10,10,10); // draw eye
-  arc(0,10,20,10,0,180); // draw mouth
+  //ellipse(0,0,50,50); // draw head
+  //fill(30);
+  //ellipse(-10,-10,10,10); //draw eye
+  //ellipse(10,-10,10,10); // draw eye
+  //arc(0,10,20,10,0,180); // draw mouth
 
 }
 
@@ -40,10 +40,21 @@ function squares(x, y, animation, pScope){
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
 
-  fill(66, 135, 245)
-  arc(x,y,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
+  fill(145, 222, 135)
+  arc(x,y,600,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
 
-  fill(255)
-  rect(-10,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw
+  fill(255) // gatsby
+  ellipse(-50,-300-animation.wave()*50,60,40) // .wave is a cosine wave btw
+  fill(1)
+  ellipse(-70,-300-animation.wave()*50,10,10)
 
+  fill(150) // astro
+  ellipse(50,-300-animation.wave()*50,60,40) // .wave is a cosine wave btw
+  fill(1)
+  ellipse(70,-300-animation.wave()*50,10,10)
+
+  strokeWeight(2)
+  stroke(201, 144, 46)
+  fill(240, 220, 141) // beef
+  ellipse(50,-800-animation.wave()*50,250,170) // .wave is a cosine wave btw
 }
