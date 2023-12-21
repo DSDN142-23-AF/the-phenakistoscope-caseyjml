@@ -1,11 +1,13 @@
 const SLICE_COUNT = 10;
 
 function setup_pScope(pScope){
-  pScope.output_mode(OUTPUT_GIF(1000));
+  pScope.output_mode(ANIMATED_DISK);
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
+
+  pScope.load_image_sequence("rabbit", "png", 2);
 }
 
 function setup_layers(pScope){
@@ -19,6 +21,10 @@ function setup_layers(pScope){
   var layer2 = new PLayer(squares);
   layer2.mode( RING );
   layer2.set_boundary( 0, 400 );
+
+  var layer3 = new PLayer(rabbit);
+  layer3.mode(RING);
+  layer3.set_boundary( 0, 2000 );
 }
 
 function faces(x, y, animation, pScope){
@@ -40,8 +46,9 @@ function squares(x, y, animation, pScope){
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
 
+  scale(1.2);
   fill(145, 222, 135)
-  arc(x,y,600,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
+  arc(x,y,600,900,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
 
   fill(255) // gatsby
   ellipse(-50,-300-animation.wave()*50,60,40) // .wave is a cosine wave btw
@@ -53,8 +60,12 @@ function squares(x, y, animation, pScope){
   fill(1)
   ellipse(70,-300-animation.wave()*50,10,10)
 
-  strokeWeight(2)
-  stroke(201, 144, 46)
-  fill(240, 220, 141) // beef
-  ellipse(50,-800-animation.wave()*50,250,170) // .wave is a cosine wave btw
+}
+
+function rabbit(x, y, animation, pScope){
+
+  scale(.4);
+  rotate(90);
+
+  pScope.draw_image_from_sequence("rabbit", 0, -2100, animation.frame)
 }
