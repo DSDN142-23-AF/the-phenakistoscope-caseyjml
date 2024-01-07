@@ -41,6 +41,10 @@ function sky(x, y, animation, pScope){
   noStroke();
   fill(137, 181, 224); // sky colour 2
   arc(x,y,1800,1800,backgroundArcStart,backgroundArcEnd);
+
+  noStroke();
+  fill(102, 142, 209); // sky colour 3
+  arc(x,y,1600,1600,backgroundArcStart,backgroundArcEnd);
 }
 
 
