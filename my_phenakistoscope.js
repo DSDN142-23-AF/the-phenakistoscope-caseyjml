@@ -14,32 +14,43 @@ function setup_layers(pScope){
 
   new PLayer(null, 220);  //lets us draw the whole circle background, ignoring the boundaries
 
-  var layer1 = new PLayer(faces);
-  layer1.mode( SWIRL(5) );
-  layer1.set_boundary( 200, 1000 );
+  var layer1 = new PLayer(sky);
+  layer1.mode( RING );
+  layer1.set_boundary( 0, 2000 );
 
-  var layer2 = new PLayer(squares);
-  layer2.mode( RING );
-  layer2.set_boundary( 0, 400 );
+  var layer2 = new PLayer(clouds);
+  layer2.mode( SWIRL(5) );
+  layer2.set_boundary( 0, 2000 );
 
-  var layer3 = new PLayer(rabbit);
-  layer3.mode(RING);
-  layer3.set_boundary( 0, 2000 );
+  var layer3 = new PLayer(centre);
+  layer3.mode( RING );
+  layer3.set_boundary( 0, 400 );
+
+  var layer4 = new PLayer(rabbit);
+  layer4.mode(RING);
+  layer4.set_boundary( 0, 2000 );
 }
 
-function faces(x, y, animation, pScope){
+function sky(x, y, animation, pScope){
+  let angleOffset = (360 / SLICE_COUNT) / 2
+  let backgroundArcStart = 270 - angleOffset;
+  let backgroundArcEnd = 270 + angleOffset;
   
-  //scale(animation.frame*2);
+  pScope.fill_background(159, 198, 237); // sky colour 1
 
-  //ellipse(0,0,50,50); // draw head
-  //fill(30);
-  //ellipse(-10,-10,10,10); //draw eye
-  //ellipse(10,-10,10,10); // draw eye
-  //arc(0,10,20,10,0,180); // draw mouth
+  noStroke();
+  fill(137, 181, 224); // sky colour 2
+  arc(x,y,1800,1800,backgroundArcStart,backgroundArcEnd);
+}
+
+
+function clouds(x, y, animation, pScope){
+scale(animation.frame*2);
+ellipse(0,0,150,150); // cloud placeholder
 
 }
 
-function squares(x, y, animation, pScope){
+function centre(x, y, animation, pScope){
 
   // this is how you set up a background for a specific layer
   let angleOffset = (360 / SLICE_COUNT) / 2
