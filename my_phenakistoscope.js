@@ -64,8 +64,6 @@ function squares(x, y, animation, pScope){
 
 function rabbit(x, y, animation, pScope){
 
-  scale(.4);
-  rotate(90);
-
-  pScope.draw_image_from_sequence("rabbit", 0, -2100, animation.frame)
+  scale(.45);
+  pScope.draw_image_from_sequence("rabbit", 0, -1900, animation.frame) // beef
 }
