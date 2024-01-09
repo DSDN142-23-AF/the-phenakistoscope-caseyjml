@@ -1,7 +1,7 @@
 const SLICE_COUNT = 10;
 
 function setup_pScope(pScope){
-  pScope.output_mode(ANIMATED_DISK);
+  pScope.output_mode(STATIC_DISK);
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
@@ -80,5 +80,5 @@ function centre(x, y, animation, pScope){
 function rabbit(x, y, animation, pScope){
 
   scale(.45);
-  pScope.draw_image_from_sequence("rabbit", 0, -1900, animation.frame) // beef
+  pScope.draw_image_from_sequence("rabbit", 0, -1500, animation.frame) // beef
 }
