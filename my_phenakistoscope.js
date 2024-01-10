@@ -1,13 +1,14 @@
 const SLICE_COUNT = 10;
 
 function setup_pScope(pScope){
-  pScope.output_mode(STATIC_DISK);
+  pScope.output_mode(ANIMATED_DISK);
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
 
   pScope.load_image_sequence("rabbit", "png", 2);
+  pScope.load_image("cloud", "png");
 }
 
 function setup_layers(pScope){
@@ -29,6 +30,10 @@ function setup_layers(pScope){
   var layer4 = new PLayer(rabbit);
   layer4.mode(RING);
   layer4.set_boundary( 0, 2000 );
+
+  var layer5 = new PLayer(clouds);
+  layer5.mode(RING);
+  layer5.set_boundary(0, 2000);
 }
 
 function sky(x, y, animation, pScope){
@@ -87,4 +92,10 @@ function rabbit(x, y, animation, pScope){
 
   scale(.4);
   pScope.draw_image_from_sequence("rabbit", 0, -1500, animation.frame) // beef
+}
+
+function clouds(x, y, animation, pScope){
+  scale(.2);
+  pScope.draw_image("cloud", 0, -4350-animation.wave()*50,60,40)
+
 }
