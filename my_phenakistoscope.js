@@ -18,7 +18,7 @@ function setup_layers(pScope){
   layer1.mode( RING );
   layer1.set_boundary( 0, 2000 );
 
-  var layer2 = new PLayer(clouds);
+  var layer2 = new PLayer(dandelions);
   layer2.mode( SWIRL(5) );
   layer2.set_boundary( 0, 2000 );
 
@@ -36,19 +36,25 @@ function sky(x, y, animation, pScope){
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
   
-  pScope.fill_background(159, 198, 237); // sky colour 1
+  pScope.fill_background(198,213,226,255); // sky colour 1
 
   noStroke();
-  fill(137, 181, 224); // sky colour 2
+  fill(225,229,228,255); // sky colour 2
   arc(x,y,1800,1800,backgroundArcStart,backgroundArcEnd);
 
   noStroke();
-  fill(102, 142, 209); // sky colour 3
-  arc(x,y,1600,1600,backgroundArcStart,backgroundArcEnd);
+  fill(255,226,202,255); // sky colour 3
+  arc(x,y,1450,1450,backgroundArcStart,backgroundArcEnd);
+
+  noStroke();
+  fill(250,242,225,255); // sky colour 4
+  arc(x,y,1200,1200,backgroundArcStart,backgroundArcEnd);
+
+  
 }
 
 
-function clouds(x, y, animation, pScope){
+function dandelions(x, y, animation, pScope){
 scale(animation.frame*2);
 ellipse(0,0,150,150); // cloud placeholder
 
@@ -63,7 +69,7 @@ function centre(x, y, animation, pScope){
 
   scale(1.2);
   fill(145, 222, 135)
-  arc(x,y,600,900,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
+  arc(x,y,600,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
 
   fill(255) // gatsby
   ellipse(-50,-300-animation.wave()*50,60,40) // .wave is a cosine wave btw
@@ -79,6 +85,6 @@ function centre(x, y, animation, pScope){
 
 function rabbit(x, y, animation, pScope){
 
-  scale(.45);
+  scale(.4);
   pScope.draw_image_from_sequence("rabbit", 0, -1500, animation.frame) // beef
 }
