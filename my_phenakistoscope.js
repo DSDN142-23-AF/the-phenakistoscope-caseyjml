@@ -21,8 +21,8 @@ function setup_layers(pScope){
   layer1.set_boundary( 0, 2000 );
 
   var layer2 = new PLayer(dandelions);
-  layer2.mode( SWIRL(10) );
-  layer2.set_boundary( 0, 2000 );
+  layer2.mode( SWIRL(2) );
+  layer2.set_boundary( 800, 1000 );
 
   var layer3 = new PLayer(centre);
   layer3.mode( RING );
@@ -30,7 +30,7 @@ function setup_layers(pScope){
 
   var layer4 = new PLayer(rabbit);
   layer4.mode(RING);
-  layer4.set_boundary( 0, 2000 );
+  layer4.set_boundary( 0, 2000);
 
   var layer5 = new PLayer(clouds);
   layer5.mode(RING);
@@ -61,8 +61,48 @@ function sky(x, y, animation, pScope){
 
 
 function dandelions(x, y, animation, pScope){
-scale(animation.frame*2);
-ellipse(0,0,100,100); // dandelion placeholder
+
+  scale(.5);
+  rotate(90*animation.frame);
+
+let dandelionX = 250 // X location of dandelion (200)
+let dandelionY = 200 // Y location of dandelion (130)
+let petalColour = 255 // white
+let stemColour = (136, 194, 118) // green
+
+noFill(); 
+beginShape(); // stem
+vertex(dandelionX, dandelionY);
+quadraticVertex(dandelionX, dandelionY+120, dandelionX-40, dandelionY+170);
+quadraticVertex(dandelionX, dandelionY+120, dandelionX-15, dandelionY+120);
+endShape();
+
+fill(stemColour); // colour of end of stem (black)
+beginShape(); // end of stem (plump part)
+vertex(dandelionX-40, dandelionY+170);
+quadraticVertex(dandelionX, dandelionY+120, dandelionX-15, dandelionY+120);
+endShape();
+
+fill(petalColour); // colour of petals (white)
+beginShape(); // dandelion petal 1
+vertex(dandelionX, dandelionY);
+quadraticVertex(dandelionX-60, dandelionY+20, dandelionX-70, dandelionY-30);
+endShape(CLOSE);
+
+beginShape(); // dandelion petal 2
+vertex(dandelionX, dandelionY);
+quadraticVertex(dandelionX-80, dandelionY-40, dandelionX-50, dandelionY-80);
+endShape(CLOSE);
+
+beginShape(); // dandelion petal 3
+vertex(dandelionX, dandelionY);
+quadraticVertex(dandelionX+80, dandelionY-40, dandelionX+50, dandelionY-80);
+endShape(CLOSE);
+
+beginShape(); // dandelion petal 4
+vertex(dandelionX, dandelionY);
+quadraticVertex(dandelionX+60, dandelionY+20, dandelionX+70, dandelionY-30);
+endShape(CLOSE);
 
 }
 
