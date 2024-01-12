@@ -46,26 +46,24 @@ function sky(x, y, animation, pScope){
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
   
-  pScope.fill_background(252, 236, 144); // sky colour 1
+  pScope.fill_background(252, 236, 144); // border colour (yellow)
 
   noStroke();
-  fill(198,213,226,255); // sun
-  arc(x, y, 1950, 1950, backgroundArcStart,backgroundArcEnd)
+  fill(198,213,226,255); // sky colour 1 (darker blue)
+  arc(x, y, 1970, 1970, backgroundArcStart,backgroundArcEnd)
 
   noStroke();
-  fill(225,229,228,255); // sky colour 2
+  fill(225,229,228,255); // sky colour 2 (light blue)
   arc(x,y,1600,1600,backgroundArcStart,backgroundArcEnd);
 
   noStroke();
-  fill(255,226,202,255); // sky colour 3
+  fill(255,226,202,255); // sky colour 3 (pink)
   arc(x,y,1450,1450,backgroundArcStart,backgroundArcEnd);
 
   noStroke();
-  fill(250,242,225,255); // sky colour 4
+  fill(250,242,225,255); // sky colour 4 (cream)
   arc(x,y,1200,1200,backgroundArcStart,backgroundArcEnd);
 
-
-  
 }
 
 
