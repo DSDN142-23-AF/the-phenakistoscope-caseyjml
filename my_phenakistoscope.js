@@ -1,7 +1,7 @@
 const SLICE_COUNT = 12;
 
 function setup_pScope(pScope){
-  pScope.output_mode(ANIMATED_DISK);
+  pScope.output_mode(STATIC_DISK);
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
@@ -35,6 +35,10 @@ function setup_layers(pScope){
   var layer5 = new PLayer(clouds);
   layer5.mode(RING);
   layer5.set_boundary(0, 2000);
+
+  var layer6 = new PLayer(shadow);
+  layer6.mode(RING);
+  layer6.set_boundary(0, 2000);
 }
 
 function sky(x, y, animation, pScope){
@@ -42,11 +46,15 @@ function sky(x, y, animation, pScope){
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
   
-  pScope.fill_background(198,213,226,255); // sky colour 1
+  pScope.fill_background(252, 236, 144); // sky colour 1
+
+  noStroke();
+  fill(198,213,226,255); // sun
+  arc(x, y, 1950, 1950, backgroundArcStart,backgroundArcEnd)
 
   noStroke();
   fill(225,229,228,255); // sky colour 2
-  arc(x,y,1800,1800,backgroundArcStart,backgroundArcEnd);
+  arc(x,y,1600,1600,backgroundArcStart,backgroundArcEnd);
 
   noStroke();
   fill(255,226,202,255); // sky colour 3
@@ -55,6 +63,7 @@ function sky(x, y, animation, pScope){
   noStroke();
   fill(250,242,225,255); // sky colour 4
   arc(x,y,1200,1200,backgroundArcStart,backgroundArcEnd);
+
 
   
 }
@@ -109,19 +118,28 @@ endShape(CLOSE);
 
 function centre(x, y, animation, pScope){
 
-  scale(.4)
-  pScope.draw_image("grass1", 0, 0)
+  scale(.4);
+  pScope.draw_image("grass1", 0, 0) // grass
 
 }
 
 function rabbit(x, y, animation, pScope){
 
   scale(.35);
-  pScope.draw_image_from_sequence("rabbit", 0, -1800, animation.frame) // beef
+  pScope.draw_image_from_sequence("rabbit", 0, -1800, animation.frame); // beef
 }
 
 function clouds(x, y, animation, pScope){
   scale(.2);
-  pScope.draw_image("cloud", 0, -4350-animation.wave()*50,60,40)
+  pScope.draw_image("cloud", 0, -4350-animation.wave()*60); // clouds
+
+}
+
+function shadow(x, y, animation, pScope){
+ 
+  noStroke();
+  fill(100, 33, 84, 52); // transparent green
+  rotate(180); // flips the animation below
+  ellipse(0, 500-animation.wave()*10, -40-animation.wave()*60, 30); // shadow under rabbit
 
 }
