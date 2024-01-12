@@ -1,13 +1,13 @@
 const SLICE_COUNT = 12;
 
 function setup_pScope(pScope){
-  pScope.output_mode(STATIC_DISK);
+  pScope.output_mode(ANIMATED_DISK);
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
 
-  pScope.load_image_sequence("rabbit", "png", 3);
+  pScope.load_image_sequence("rabbit", "png", 4);
   pScope.load_image("cloud", "png");
   pScope.load_image("grass1", "png");
 }
@@ -111,17 +111,6 @@ function centre(x, y, animation, pScope){
 
   scale(.4)
   pScope.draw_image("grass1", 0, 0)
-
-  scale(1)
-  fill(255) // gatsby
-  ellipse(-50,-300-animation.wave()*50,60,40) 
-  fill(1)
-  ellipse(-70,-300-animation.wave()*50,10,10)
-
-  fill(150) // astro
-  ellipse(50,-300-animation.wave()*50,60,40) 
-  fill(1)
-  ellipse(70,-300-animation.wave()*50,10,10)
 
 }
 
